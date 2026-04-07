@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int set[] = {1, 2, 3, 4, 5};
+int n = 5;
+int target = 5;
+
+void subset(int index, int sum, int result[]) {
+    if (sum == target) {
+        for (int i = 0; i < index; i++)
+            cout << result[i] << " ";
+        cout << endl;
+        return;
+    }
+
+    for (int i = index; i < n; i++) {
+        if (sum + set[i] <= target) {
+            result[index] = set[i];
+            subset(i + 1, sum + set[i], result);
+        }
+    }
+}
+
+int main() {
+    int result[10];
+    subset(0, 0, result);
+    return 0;
+}
